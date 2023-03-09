@@ -11,6 +11,12 @@
         <testsuite name="Feature">
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
+        <testsuite name="BetterPlay-Unit">
+            <directory suffix="Test.php">./better-play/tests/Unit</directory>
+        </testsuite>
+        <testsuite name="BetterPlay-Feature">
+            <directory suffix="Test.php">./better-play/tests/Feature</directory>
+        </testsuite>
     </testsuites>
     <coverage>
         <include>
