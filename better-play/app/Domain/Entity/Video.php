@@ -14,6 +14,7 @@ class Video
         protected int $duration,
         protected bool $opened,
         protected int $rating,
+        protected array $commentsId = [],
         protected bool $published = false,
         protected string $thumbFile = '',
         protected string $thumbHalf = '',
