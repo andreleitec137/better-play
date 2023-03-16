@@ -1,20 +1,122 @@
 <?php
 
-namespace Tests\BetterPlay\Feature;
+namespace Tests\BetterPlay\Unit;
 
+use BetterPlay\Domain\Entity\Category;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     */
-    public function test_access_root_url(): void
-    {
-        $response = $this->get('/');
 
-        $response->assertStatus(200);
+    public function test_Attributes()
+    {
+        $id = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $name = "Category";
+        $description = "Description category";
+        $category = new Category(
+            id: $id,
+            name: $name,
+            description: $description,
+            isActive: true
+        );
+
+
+        $this->assertEquals($id, $category->id());
+        $this->assertEquals($name, $category->name);
+        $this->assertEquals($description, $category->description);
+        $this->assertEquals(true, $category->isActive);
+
+        $category->validate();
+    }
+
+    public function test_Activated()
+    {
+        $name = "Category";
+        $category = new Category(
+            name: $name,
+            isActive: false,
+        );
+
+        $this->assertFalse($category->isActive);
+        $category->activate();
+        $this->assertTrue($category->isActive);
+    }
+
+    public function test_Disabled()
+    {
+
+        $name = "Category";
+        $category = new Category(
+            name: $name,
+            isActive: true,
+        );
+
+        $this->assertTrue($category->isActive);
+        $category->disable();
+        $this->assertFalse($category->isActive);
+    }
+
+
+    public function test_update_name_and_description()
+    {
+        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $name = "Category";
+        $description = "Description category";
+        $createAt = "2023-03-16 12:12:12";
+        $category = new Category(
+            id: $uuid,
+            name: $name,
+            description: $description,
+            isActive: true,
+            createdAt: $createAt,
+        );
+
+        $category->update(name: 'New category', description: 'new description');
+
+        $this->assertEquals($uuid, $category->id());
+        $this->assertEquals("New category", $category->name);
+        $this->assertEquals("new description", $category->description);
+    }
+
+    public function test_update_only_name()
+    {
+        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $name = "Category";
+        $description = "Description category";
+        $createAt = "2023-03-16 12:12:12";
+        $category = new Category(
+            id: $uuid,
+            name: $name,
+            description: $description,
+            isActive: true,
+            createdAt: $createAt,
+        );
+
+        $category->update(name: 'New category');
+
+        $this->assertEquals($uuid, $category->id());
+        $this->assertEquals("New category", $category->name);
+    }
+
+    public function test_update_only_description()
+    {
+        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $name = "Category";
+        $description = "Description category";
+        $createAt = "2023-03-16 12:12:12";
+        $category = new Category(
+            id: $uuid,
+            name: $name,
+            description: $description,
+            isActive: true,
+            createdAt: $createAt,
+        );
+
+        $category->update(description: 'new description');
+
+        $this->assertEquals($uuid, $category->id());
+        $this->assertEquals("new description", $category->description);
     }
 }

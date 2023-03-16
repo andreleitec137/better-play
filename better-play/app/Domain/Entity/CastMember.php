@@ -3,22 +3,19 @@
 namespace BetterPlay\Domain\Entity;
 
 use BetterPlay\Domain\Entity\Traits\EntityTraits;
+use BetterPlay\Domain\Enum\CastMemberType;
 use BetterPlay\Domain\Validation\DomainValidation;
 use BetterPlay\Domain\ValueObject\Uuid;
 use DateTime;
 
-class Category
+class CastMember
 {
-
     use EntityTraits;
-
-
 
     public function __construct(
         protected Uuid|string $id = '',
         protected string $name = '',
-        protected string $description = '',
-        protected bool $isActive = true,
+        protected CastMemberType $type = CastMemberType::ACTOR,
         protected DateTime|string $createdAt = '',
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::random();
@@ -27,14 +24,14 @@ class Category
         $this->validate();
     }
 
-
-
     public function update(
-        string $name = '',
-        string $description = ''
+        string $name,
+        CastMemberType $type
     ) {
         $this->name = $name;
-        $this->description = $description;
+        $this->type = $type;
+
+        $this->validate();
     }
 
     public function validate()

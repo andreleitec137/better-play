@@ -1,6 +1,6 @@
 <?php
 
-use BetterPlay\Domain\Entity;
+namespace BetterPlay\Domain\Entity;
 
 class Video
 {
