@@ -1,10 +1,8 @@
 <?php
 
-namespace Tests\BetterPlay\Unit;
+namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\Category;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -12,18 +10,38 @@ class CategoryTest extends TestCase
 
     public function test_Attributes()
     {
-        $id = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $name = "Category";
+        $description = "Description category";
+        $createAt = "2023-03-16 12:12:12";
+        $category = new Category(
+            id: $uuid,
+            name: $name,
+            description: $description,
+            isActive: true,
+            createdAt: $createAt,
+        );
+
+
+        $this->assertEquals($uuid, $category->id());
+        $this->assertEquals($name, $category->name);
+        $this->assertEquals($description, $category->description);
+        $this->assertEquals(true, $category->isActive);
+
+        $category->validate();
+    }
+
+    public function test_CreateCategoryWithoutId()
+    {
         $name = "Category";
         $description = "Description category";
         $category = new Category(
-            id: $id,
             name: $name,
             description: $description,
             isActive: true
         );
 
-
-        $this->assertEquals($id, $category->id());
+        $this->assertNotEmpty($category->id());
         $this->assertEquals($name, $category->name);
         $this->assertEquals($description, $category->description);
         $this->assertEquals(true, $category->isActive);

@@ -12,8 +12,6 @@ class Category
 
     use EntityTraits;
 
-
-
     public function __construct(
         protected Uuid|string $id = '',
         protected string $name = '',

@@ -2,17 +2,16 @@
 
 namespace Tests\Unit\App\Models;
 
-
-use App\Models\Category;
+use App\Models\CastMember;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CategoryTest extends ModelTestCase
+class CastMemberTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Category();
+        return new CastMember();
     }
 
     protected function traits(): array
@@ -28,8 +27,8 @@ class CategoryTest extends ModelTestCase
         return [
             'id',
             'name',
-            'description',
-            'is_active',
+            'type',
+            'created_at',
         ];
     }
 
@@ -37,7 +36,6 @@ class CategoryTest extends ModelTestCase
     {
         return [
             'id' => 'string',
-            'is_active' => 'boolean',
             'deleted_at' => 'datetime',
         ];
     }

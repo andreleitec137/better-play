@@ -6,19 +6,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Category extends Model
+class Video extends Model
 {
     use HasFactory, SoftDeletes;
 
-    public $incrementing = false;
-
-
     protected $fillable = [
         'id',
-        'name',
+        'title',
         'description',
-        'is_active',
+        'year_launched',
+        'opened',
+        'rating',
+        'duration',
+        'created_at',
     ];
+
+    public $incrementing = false;
 
     protected $casts = [
         'id' => 'string',
@@ -26,13 +29,18 @@ class Category extends Model
         'deleted_at' => 'datetime',
     ];
 
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
     public function genres()
     {
         return $this->belongsToMany(Genre::class);
     }
 
-    public function videos()
+    public function castMembers()
     {
-        return $this->belongsToMany(Video::class);
+        return $this->belongsToMany(CastMember::class, 'cast_member_video');
     }
 }

@@ -2,17 +2,16 @@
 
 namespace Tests\Unit\App\Models;
 
-
-use App\Models\Category;
+use App\Models\Video;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CategoryTest extends ModelTestCase
+class VideoTest extends ModelTestCase
 {
     protected function model(): Model
     {
-        return new Category();
+        return new Video();
     }
 
     protected function traits(): array
@@ -27,9 +26,13 @@ class CategoryTest extends ModelTestCase
     {
         return [
             'id',
-            'name',
+            'title',
             'description',
-            'is_active',
+            'year_launched',
+            'opened',
+            'rating',
+            'duration',
+            'created_at',
         ];
     }
 

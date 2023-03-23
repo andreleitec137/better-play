@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests\BetterPlay\Unit;
+namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\CastMember;
 use BetterPlay\Domain\Enum\CastMemberType;
 use Ramsey\Uuid\Uuid as RamseyUuid;
-use DateTime;
 use Tests\TestCase;
 
 class CastMemberTest extends TestCase
