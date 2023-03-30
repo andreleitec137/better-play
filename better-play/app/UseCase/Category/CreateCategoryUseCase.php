@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCase\Category;
+namespace BetterPlay\UseCase\Category;
 
 use BetterPlay\Domain\Entity\Category;
 use BetterPlay\Domain\Repository\CategoryRepositoryInterface;

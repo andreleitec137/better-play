@@ -11,12 +11,13 @@ class Genre
 {
     use EntityTraits;
 
+    protected array $categoriesId = [];
+
     public function __construct(
         protected Uuid|string $id = '',
         protected string $name = '',
         protected string $description = '',
         protected bool $isActive = true,
-        protected array $categoriesId = [],
         protected DateTime|string $createdAt = '',
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::random();
@@ -30,14 +31,12 @@ class Genre
     }
 
 
-    public function addCategory(string $categoryId): void
+    public function addCategoryId(string $categoryId)
     {
         array_push($this->categoriesId, $categoryId);
-
-        $this->validate();
     }
 
-    public function removeCategory(string $categoryId): void
+    public function removeCategoryId(string $categoryId)
     {
         unset($this->categoriesId[array_search($categoryId, $this->categoriesId)]);
     }

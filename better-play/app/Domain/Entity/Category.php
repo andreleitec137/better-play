@@ -22,7 +22,9 @@ class Category
         $this->id = $this->id ? new Uuid($this->id) : Uuid::random();
         $this->createdAt = $this->createdAt ? new DateTime($this->createdAt) : new DateTime();
 
-        $this->validate();
+        DomainValidation::notNull($this->name);
+        DomainValidation::strMaxLength($this->name);
+        DomainValidation::strMinLength($this->name);
     }
 
 

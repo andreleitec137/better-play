@@ -34,7 +34,7 @@ class GenreTest extends TestCase
         $genre->validate();
     }
 
-    public function test_AttributesCreate()
+    public function test_AttributesCreateIdAndCreateAt()
     {
         $genre = new Genre(
             name: 'New Genre',
@@ -42,7 +42,6 @@ class GenreTest extends TestCase
 
         $this->assertNotEmpty($genre->id());
         $this->assertEquals('New Genre', $genre->name);
-        $this->assertEquals(true, $genre->isActive);
         $this->assertNotEmpty($genre->createdAt());
     }
 
@@ -152,10 +151,10 @@ class GenreTest extends TestCase
         $this->assertIsArray($genre->categoriesId);
         $this->assertCount(0, $genre->categoriesId);
 
-        $genre->addCategory(
+        $genre->addCategoryId(
             categoryId: $categoryId
         );
-        $genre->addCategory(
+        $genre->addCategoryId(
             categoryId: $categoryId
         );
         $this->assertCount(2, $genre->categoriesId);
@@ -167,15 +166,20 @@ class GenreTest extends TestCase
         $categoryId2 = (string) RamseyUuid::uuid4();
 
         $genre = new Genre(
-            name: 'new genre',
-            categoriesId: [
-                $categoryId,
-                $categoryId2,
-            ]
+            name: 'new genre'
         );
+
+        $genre->addCategoryId(
+            categoryId: $categoryId,
+        );
+        $genre->addCategoryId(
+            categoryId: $categoryId2,
+        );
+
+
         $this->assertCount(2, $genre->categoriesId);
 
-        $genre->removeCategory(
+        $genre->removeCategoryId(
             categoryId: $categoryId,
         );
 

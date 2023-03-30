@@ -1,6 +1,6 @@
 <?php
 
-namespace UseCase\Category;
+namespace BetterPlay\UseCase\Category;
 
 class DeleteCategoryUseCase
 {
