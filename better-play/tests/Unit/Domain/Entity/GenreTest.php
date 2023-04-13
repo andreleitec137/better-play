@@ -3,7 +3,7 @@
 namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\Genre;
-use Ramsey\Uuid\Uuid as RamseyUuid;
+use BetterPlay\Domain\ValueObject\Uuid;
 
 use Tests\TestCase;
 
@@ -11,7 +11,7 @@ class GenreTest extends TestCase
 {
     public function test_Attributes()
     {
-        $uuid = (string) RamseyUuid::uuid4();
+        $uuid = (string) Uuid::random();
         $name = "New Genre";
         $description = "Description genre";
         $date = date('Y-m-d H:i:s');
@@ -142,7 +142,7 @@ class GenreTest extends TestCase
 
     public function test_AddCategoryToGenre()
     {
-        $categoryId = (string) RamseyUuid::uuid4();
+        $categoryId = (string) Uuid::random();
 
         $genre = new Genre(
             name: 'new genre'
@@ -162,8 +162,8 @@ class GenreTest extends TestCase
 
     public function test_RemoveCategoryToGenre()
     {
-        $categoryId = (string) RamseyUuid::uuid4();
-        $categoryId2 = (string) RamseyUuid::uuid4();
+        $categoryId = (string) Uuid::random();
+        $categoryId2 = (string) Uuid::random();
 
         $genre = new Genre(
             name: 'new genre'

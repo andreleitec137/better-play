@@ -3,6 +3,7 @@
 namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\Category;
+use BetterPlay\Domain\ValueObject\Uuid;
 use Tests\TestCase;
 
 class CategoryTest extends TestCase
@@ -10,7 +11,7 @@ class CategoryTest extends TestCase
 
     public function test_Attributes()
     {
-        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $uuid = (string) Uuid::random();
         $name = "Category";
         $description = "Description category";
         $createAt = "2023-03-16 12:12:12";
@@ -79,7 +80,7 @@ class CategoryTest extends TestCase
 
     public function test_update_name_and_description()
     {
-        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $uuid = (string) Uuid::random();
         $name = "Category";
         $description = "Description category";
         $createAt = "2023-03-16 12:12:12";
@@ -100,7 +101,7 @@ class CategoryTest extends TestCase
 
     public function test_update_only_name()
     {
-        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $uuid = (string) Uuid::random();
         $name = "Category";
         $description = "Description category";
         $createAt = "2023-03-16 12:12:12";
@@ -120,7 +121,7 @@ class CategoryTest extends TestCase
 
     public function test_update_only_description()
     {
-        $uuid = "3c7df297-b1f8-4eef-8ce1-2fb2a6614888";
+        $uuid = (string) Uuid::random();
         $name = "Category";
         $description = "Description category";
         $createAt = "2023-03-16 12:12:12";

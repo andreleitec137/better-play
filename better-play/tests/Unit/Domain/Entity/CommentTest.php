@@ -3,8 +3,8 @@
 namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\Comment;
-use BetterPlay\Domain\Entity\Genre;
-use Ramsey\Uuid\Uuid as RamseyUuid;
+use BetterPlay\Domain\ValueObject\Uuid;
+
 
 use Tests\TestCase;
 
@@ -12,7 +12,7 @@ class CommentTest extends TestCase
 {
     public function test_Attributes()
     {
-        $uuid = (string) RamseyUuid::uuid4();
+        $uuid = (string) Uuid::random();
         $description = "Description comment";
         $date = date('Y-m-d H:i:s');
 

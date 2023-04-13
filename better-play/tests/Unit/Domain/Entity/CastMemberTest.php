@@ -4,7 +4,7 @@ namespace Tests\BetterPlay\Unit\Domain\Entity;
 
 use BetterPlay\Domain\Entity\CastMember;
 use BetterPlay\Domain\Enum\CastMemberType;
-use Ramsey\Uuid\Uuid as RamseyUuid;
+use BetterPlay\Domain\ValueObject\Uuid;
 use Tests\TestCase;
 
 class CastMemberTest extends TestCase
@@ -12,7 +12,7 @@ class CastMemberTest extends TestCase
 
     public function testAttributes()
     {
-        $uuid = (string) RamseyUuid::uuid4();
+        $uuid = (string) Uuid::random();
         $date = date('Y-m-d H:i:s');
         $castMember = new CastMember(
             id: $uuid,

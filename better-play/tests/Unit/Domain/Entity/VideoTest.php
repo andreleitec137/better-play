@@ -7,7 +7,6 @@ use BetterPlay\Domain\Enum\Censure;
 use BetterPlay\Domain\Enum\MediaStatus;
 use BetterPlay\Domain\ValueObject\Image;
 use BetterPlay\Domain\ValueObject\Media;
-use Ramsey\Uuid\Uuid as RamseyUuid;
 use BetterPlay\Domain\ValueObject\Uuid;
 use DateTime;
 use Tests\TestCase;
@@ -17,7 +16,7 @@ class VideoTest extends TestCase
 
     public function test_Attributes()
     {
-        $uuid = (string) RamseyUuid::uuid4();
+        $uuid = (string) Uuid::random();
         $title = "New Video";
         $description = "Description video";
         $date = date('Y-m-d H:i:s');
@@ -64,7 +63,7 @@ class VideoTest extends TestCase
 
     public function test_UpdateVideo()
     {
-        $uuid = (string) RamseyUuid::uuid4();
+        $uuid = (string) Uuid::random();
         $title = "New Video";
         $description = "Description video";
         $date = date('Y-m-d H:i:s');
@@ -98,7 +97,7 @@ class VideoTest extends TestCase
 
     public function testAddCategoryId()
     {
-        $categoryId = (string) RamseyUuid::uuid4();
+        $categoryId = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -121,7 +120,7 @@ class VideoTest extends TestCase
 
     public function testRemoveCategoryId()
     {
-        $categoryId = (string) RamseyUuid::uuid4();
+        $categoryId = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -149,7 +148,7 @@ class VideoTest extends TestCase
 
     public function testAddGenre()
     {
-        $genreId = (string) RamseyUuid::uuid4();
+        $genreId = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -172,7 +171,7 @@ class VideoTest extends TestCase
 
     public function testRemoveGenre()
     {
-        $genreId = (string) RamseyUuid::uuid4();
+        $genreId = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -198,7 +197,7 @@ class VideoTest extends TestCase
 
     public function testAddCastMember()
     {
-        $castMemberId = (string) RamseyUuid::uuid4();
+        $castMemberId = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -221,7 +220,8 @@ class VideoTest extends TestCase
 
     public function testRemoveCastMember()
     {
-        $castMemberId = (string) RamseyUuid::uuid4();
+        $castMemberId = (string) Uuid::random();
+        $castMemberId2 = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -235,7 +235,7 @@ class VideoTest extends TestCase
             castMemberId: $castMemberId,
         );
         $entity->addCastMemberId(
-            castMemberId: 'uuid',
+            castMemberId: $castMemberId2,
         );
         $this->assertCount(2, $entity->castMemberIds);
 
@@ -247,8 +247,8 @@ class VideoTest extends TestCase
 
     public function test_AddComments()
     {
-        $commentId = (string) RamseyUuid::uuid4();
-        $commentId2 = (string) RamseyUuid::uuid4();
+        $commentId = (string) Uuid::random();
+        $commentId2 = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
@@ -271,8 +271,8 @@ class VideoTest extends TestCase
 
     public function test_RemoveComments()
     {
-        $commentId = (string) RamseyUuid::uuid4();
-        $commentId2 = (string) RamseyUuid::uuid4();
+        $commentId = (string) Uuid::random();
+        $commentId2 = (string) Uuid::random();
 
         $entity = new Video(
             title: 'new title',
