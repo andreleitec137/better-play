@@ -5,9 +5,9 @@ namespace Tests\BetterPlay\Unit\UseCase\Category;
 
 use BetterPlay\Domain\Entity\Category as EntityCategory;
 use BetterPlay\Domain\Repository\CategoryRepositoryInterface;
+use BetterPlay\Domain\ValueObject\Uuid;
 use BetterPlay\UseCase\Category\CreateCategoryUseCase;
 use BetterPlay\UseCase\DTO\Category\CreateCategory\{CategoryCreateInputDTO, CategoryCreateOutputDTO};
-use Ramsey\Uuid\Uuid as RamseyUuid;
 use Mockery;
 use stdClass;
 use Tests\TestCase;
@@ -16,7 +16,7 @@ class CreateCategoryUseCaseTest extends TestCase
 {
     public function test_CreateNewCategory()
     {
-        $uuid = (string) RamseyUuid::uuid4()->toString();
+        $uuid = (string) Uuid::random();
         $categoryName = 'name cat';
         $categoryDescription = 'description cat';
 

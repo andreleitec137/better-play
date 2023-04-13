@@ -4,9 +4,9 @@ namespace Tests\BetterPlay\Unit\UseCase\Category;
 
 use BetterPlay\Domain\Entity\Category as EntityCategory;
 use BetterPlay\Domain\Repository\CategoryRepositoryInterface;
+use BetterPlay\Domain\ValueObject\Uuid;
 use BetterPlay\UseCase\Category\UpdateCategoryUseCase;
 use BetterPlay\UseCase\DTO\Category\UpdateCategory\{CategoryUpdateInputDTO, CategoryUpdateOutputDTO};
-use Ramsey\Uuid\Uuid as RamseyUuid;
 use Mockery;
 use stdClass;
 use Tests\TestCase;
@@ -16,7 +16,7 @@ class UpdateCategoryUseCaseTest extends TestCase
 {
     public function test_RenameCategory()
     {
-        $uuid = (string) RamseyUuid::uuid4()->toString();
+        $uuid = (string) Uuid::random();
         $categoryName = 'name cat';
         $categoryDescription = 'description cat';
 
