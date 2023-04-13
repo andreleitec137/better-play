@@ -29,14 +29,10 @@ trait EntityTraits
     public function activate()
     {
         $this->isActive = true;
-
-        $this->validate();
     }
 
     public function disable()
     {
         $this->isActive = false;
-
-        $this->validate();
     }
 }

@@ -2,6 +2,10 @@
 
 namespace BetterPlay\Domain\Entity;
 
+use BetterPlay\Domain\Entity\Traits\EntityTraits;
+use BetterPlay\Domain\ValueObject\Uuid;
+use DateTime;
+
 class Comment
 {
     use EntityTraits;
