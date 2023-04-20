@@ -24,7 +24,7 @@ class CreateCategoryUseCaseTest extends TestCase
         //Criar um Mock/Duble da entidade
         $this->mockEntity = Mockery::mock(EntityCategory::class, [$uuid, $categoryName, $categoryDescription]);
         $this->mockEntity->shouldReceive('id')->andReturn($uuid);
-
+        $this->mockEntity->shouldReceive('createdAt')->andReturn(date('Y-m-d H:i:s'));
 
 
         //Criar um Mock/Duble do repositório
@@ -40,6 +40,9 @@ class CreateCategoryUseCaseTest extends TestCase
         $responseUseCase = $useCase->execute($this->mockInputDto);
 
         $this->assertInstanceOf(CategoryCreateOutputDTO::class, $responseUseCase);
+        $this->assertNotEmpty($responseUseCase->id);
+        $this->assertEquals($categoryName, $responseUseCase->name);
+        $this->assertEquals($categoryDescription, $responseUseCase->description);
 
 
         /**

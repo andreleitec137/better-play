@@ -11,7 +11,7 @@ use Mockery;
 use stdClass;
 use Tests\TestCase;
 
-class DeleteCategoryUseCaseUnitTest extends TestCase
+class DeleteCategoryUseCaseTest extends TestCase
 {
     public function test_Delete()
     {

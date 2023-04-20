@@ -10,7 +10,7 @@ use Tests\TestCase;
 use Mockery;
 use stdClass;
 
-class ListCategoriesUseCaseUnitTest extends TestCase
+class ListCategoriesUseCaseTest extends TestCase
 {
     public function test_ListCategoriesEmpty()
     {

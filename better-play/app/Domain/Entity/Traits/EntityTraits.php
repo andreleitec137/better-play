@@ -23,7 +23,7 @@ trait EntityTraits
 
     public function createdAt(): string
     {
-        return $this->createdAt->format('Y-m-d H:i:s');
+        return (string) $this->createdAt->format('Y-m-d H:i:s');
     }
 
     public function activate()

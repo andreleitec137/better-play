@@ -11,7 +11,7 @@ use Tests\TestCase;
 use Mockery;
 use stdClass;
 
-class ListCategoryUseCaseUnitTest extends TestCase
+class ListCategoryUseCaseTest extends TestCase
 {
 
     public function test_GetById()
