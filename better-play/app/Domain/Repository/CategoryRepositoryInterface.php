@@ -20,4 +20,5 @@ interface CategoryRepositoryInterface
     public function update(Category $category): Category;
 
     public function delete(string $categoryId): bool;
+
 }

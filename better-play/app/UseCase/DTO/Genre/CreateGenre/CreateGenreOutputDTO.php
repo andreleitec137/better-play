@@ -2,7 +2,7 @@
 
 namespace BetterPlay\UseCase\DTO\Genre\CreateGenre;
 
-class GenreCreateOutputDTO
+class CreateGenreOutputDTO
 {
     public function __construct(
         public string $id,
@@ -12,4 +12,5 @@ class GenreCreateOutputDTO
         public string $created_at = ''
     ) {
     }
+
 }

@@ -2,7 +2,8 @@
 
 namespace BetterPlay\UseCase\DTO\Genre\CreateGenre;
 
-class GenreCreateInputDTO
+
+class CreateGenreInputDTO
 {
     public function __construct(
         public string $name,
@@ -10,4 +11,5 @@ class GenreCreateInputDTO
         public bool $isActive = true,
     ) {
     }
+
 }
