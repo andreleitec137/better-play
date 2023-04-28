@@ -7,9 +7,9 @@ use BetterPlay\Domain\Entity\Video;
 interface VideoRepositoryInterface
 {
 
-    public function insert(Video $video): Genre;
+    public function insert(Video $video): Video;
 
-    public function findById(string $videoId): Genre;
+    public function findById(string $videoId): Video;
 
     public function getIdsListIds(array $videosIds = []): array;
 
