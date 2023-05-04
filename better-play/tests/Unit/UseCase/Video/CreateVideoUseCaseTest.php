@@ -24,9 +24,6 @@ class CreateVideoUseCaseTest extends TestCase
     public function test_CreateNewVideo()
     {
         $uuid = (string) Uuid::random();
-        $VideoOpenned = false;
-        $VideoPublished = false;
-        $VideoCreatedAt = date('Y-m-d H:i:s');
 
         $VideoTitle = 'Vídeo de uma porta';
         $VideoDescription = 'Isso é um video de uma porta';
@@ -42,8 +39,8 @@ class CreateVideoUseCaseTest extends TestCase
 
         /** @var MockInterface $mockEntity */
         $mockEntity = Mockery::mock(EntityVideo::class, [$uuid,
-        $VideoTitle ,$VideoDescription, $VideoYearLaunched, $VideoDuration ,  $VideoOpenned, $VideoRating ,  $VideoCensure, $VideoPublished,
-        $VideoCreatedAt, $VideoThumbFile, $VideoThumbHalf,  $VideoBannerFile , $VideoTrailerFile, $VideoFile ]);
+        $VideoTitle ,$VideoDescription, $VideoYearLaunched, $VideoDuration, $VideoRating ,  $VideoCensure,
+         $VideoThumbFile, $VideoThumbHalf,  $VideoBannerFile , $VideoTrailerFile, $VideoFile ]);
 
         $mockEntity->shouldReceive('id')->andReturn($uuid);
         $mockEntity->shouldReceive('createdAt')->andReturn(date('Y-m-d H:i:s'));
@@ -78,7 +75,6 @@ class CreateVideoUseCaseTest extends TestCase
         $this->assertEquals($VideoBannerFile, $responseUseCase->bannerFile);
         $this->assertEquals($VideoTrailerFile, $responseUseCase->trailerFile);
         $this->assertEquals($VideoFile, $responseUseCase->videoFile);
-
 
         /** @var MockInterface $spy */
         $spy = Mockery::spy(stdClass::class, VideoRepositoryInterface::class);

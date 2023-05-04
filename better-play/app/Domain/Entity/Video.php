@@ -28,16 +28,18 @@ class Video
         protected string $description = '',
         protected int $yearLaunched = 0,
         protected int $duration = 0,
-        protected bool $opened = false,
         protected int  $rating = 0,
         protected Censure $censure = Censure::L,
-        protected bool $published = false,
-        protected DateTime|string $createdAt = '',
         protected ?Image $thumbFile = null,
         protected ?Image $thumbHalf = null,
         protected ?Image $bannerFile = null,
         protected ?Media $trailerFile = null,
         protected ?Media $videoFile = null,
+
+        protected bool $published = false,
+        protected bool $opened = false,
+        protected DateTime|string $createdAt = '',
+
     ) {
         $this->id = $this->id ? new Uuid($this->id) : Uuid::random();
         $this->createdAt = $this->createdAt ? new DateTime($this->createdAt) : new DateTime();
